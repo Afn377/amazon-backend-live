@@ -47,12 +47,16 @@ function Payment() {
         payment_method: {
           card: elements.getElement(CardElement),
         },
-      }).then(
+      })
+      .then(({ paymentIntent }) => {
+        
+        
+        
       dispatch({
       type: "EMPTY_BASKET",
-    });
-      )
-      .then(({ paymentIntent }) => {
+      });
+      
+        
         db.collection("users")
           .doc(user?.uid)
           .collection("orders")
