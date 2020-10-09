@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = '*0q!om)q7&8cnk)yvk=eb&4spu*hx-ok)jb=kev)*8vmmon#sh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['damp-reef-61588.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['damp-reef-61588.herokuapp.com', '127.0.0.1', 'amazon-clone-live.herokuapp.com']
 
 
 # Application definition
@@ -136,3 +137,6 @@ STATICFILES_DIRS = [
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
 ]
+
+
+django_heroku.settings(locals())
