@@ -40,16 +40,18 @@ function Payment() {
     event.preventDefault();
     setProcessing(true);
 
-    dispatch({
-      type: "EMPTY_BASKET",
-    });
+    
 
     const payload = await stripe
       .confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
         },
-      })
+      }).then(
+      dispatch({
+      type: "EMPTY_BASKET",
+    });
+      )
       .then(({ paymentIntent }) => {
         db.collection("users")
           .doc(user?.uid)
